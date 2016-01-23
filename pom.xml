@@ -73,6 +73,22 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>3.2.1</version>
+                <configuration>
+                    <user>dance</user>
+                    <password>vvGd@PLio1P3</password>
+                    <url>jdbc:postgresql://localhost:5432/dance_hours_spring_boot</url>
+                    <schemas>
+                        <schema>public</schema>
+                    </schemas>
+                    <placeholders>
+                        <dummyPlaceholder>valueXYZ</dummyPlaceholder>
+                    </placeholders>
+                </configuration>
+            </plugin>
+			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<version>${kotlin.version}</version>
