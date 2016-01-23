@@ -6,13 +6,13 @@ create table dance_user (
 );
 
 create table dance_user_roles (
-    user_id uuid not null,
-    role_id uuid not null,
-    primary key (user_id, role_id)
+    user_id   uuid     not null,
+    role_code char(16) not null,
+    primary key (user_id, role_code)
 );
 
 create table user_roles (
-    role_id     uuid primary key not null,
+    role_code   char(16) primary key not null,
     name        varchar(255),
     description text,
     is_admin    bool
