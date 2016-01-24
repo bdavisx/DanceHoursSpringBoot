@@ -17,11 +17,18 @@
 <body>
 
 <div class="container">
-    <div class="jumbotron">
-        <img src="../static/images/Test1200x628.png" width="1000"
-            th:src="@{images/Test1200x628.png}"/>
-        <h1>Hello</h1>
-    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr><td>Name</td><td>Email</td></tr>
+        </thead>
+        <tbody>
+            <!--/*@thymesVar id="users" type="List<DanceUserAggregate>"*/-->
+            <tr th:each="user : ${users}">
+                <td th:text="${user.fullName}">Bill Davis</td>
+                <td th:text="${user.email}">abc@def.blah</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

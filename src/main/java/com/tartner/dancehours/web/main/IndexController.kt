@@ -3,26 +3,21 @@ package com.tartner.dancehours.web.main
 import com.tartner.dancehours.domain.danceuser.DanceUserAggregate
 import com.tartner.dancehours.domain.danceuser.DanceUserRepository
 import com.tartner.dancehours.general.DanceHoursId
+import com.tartner.dancehours.service.UserMaintenanceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
 open class IndexController @Autowired constructor(
-    private val repository: DanceUserRepository
-) {
+    private val service: UserMaintenanceService
+    ) {
 
-    @RequestMapping("/") fun index() : String {
-        val user = DanceUserAggregate()
-        user.id = DanceHoursId.create()
-        user.fullName = "Test 1"
-        user.email = "a@b.comm"
-        repository.save(user)
-
-        val users : MutableList<DanceUserAggregate>? = repository.findAll()
-        for (danceUserAggregate in users!!) {
-            System.out.print("Heloo")
-        }
+    @RequestMapping("/")
+    fun index(model: Model): String {
+        // TODO: service should return immutable users
+        model.addAttribute("users", service.GetUserList())
         return "index"
     }
 }
