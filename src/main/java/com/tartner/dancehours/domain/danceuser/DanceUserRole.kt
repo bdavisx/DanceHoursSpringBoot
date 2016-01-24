@@ -5,7 +5,7 @@ import com.tartner.utilities.Empty
 import javax.persistence.*
 
 @Entity
-@Table(name = "user_roles", schema = "public", catalog = "dance_hours")
+@Table(name = "user_roles")
 public class DanceUserRole() {
     @Id
     @Column(name = "role_code", nullable = false, insertable = true, updatable = true, length = 16)

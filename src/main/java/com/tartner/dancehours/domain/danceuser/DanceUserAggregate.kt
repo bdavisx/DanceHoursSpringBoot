@@ -7,7 +7,7 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "dance_user", schema = "public", catalog = "dance_hours")
+@Table(name = "dance_user")
 public open class DanceUserAggregate() {
     @Id @Type(type = "pg-uuid")
     @Column(name = "user_id", nullable = false, insertable = true, updatable = true)
