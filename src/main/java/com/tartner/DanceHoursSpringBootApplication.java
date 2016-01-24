@@ -1,4 +1,4 @@
-package com.tartner.dancehours;
+package com.tartner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type
 import java.util.*
 import javax.persistence.*
 
+@Entity
+@Table(name = "dance_user", schema = "public", catalog = "dance_hours")
 public open class DanceUserAggregate() {
     @Id @Type(type = "pg-uuid")
     @Column(name = "user_id", nullable = false, insertable = true, updatable = true)
@@ -24,8 +26,8 @@ public open class DanceUserAggregate() {
     @OneToMany(targetEntity = DanceUserRole::class)
     @JoinTable(name = "dance_user_roles",
         joinColumns = arrayOf(JoinColumn(name = "user_id", referencedColumnName = "user_id")),
-        inverseJoinColumns = arrayOf(JoinColumn(name = "role_text", referencedColumnName =
-        "role_text")))
+        inverseJoinColumns = arrayOf(JoinColumn(name = "role_code", referencedColumnName =
+        "role_code")))
     private val userRoles: List<DanceUserRole> = ArrayList<DanceUserRole>()
 
     companion object {
