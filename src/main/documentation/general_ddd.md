@@ -1,6 +1,8 @@
 Remember to define your business repository in terms of the business, then implement the
 interface in the Database layer.
 
+# Aggregates and Mapping
+
 So: DanceUserAggregateRepository: Find(id): DanceUserAggregate
 
     * If this is a domain object (DanceUserAggregate) and it's using a JPA entity for backing, then
@@ -8,3 +10,6 @@ So: DanceUserAggregateRepository: Find(id): DanceUserAggregate
 
     * If we're going to go with a "pure" Domain object (no JPA backing), then we're going to have
      to do some serious translation between the two
+
+We're going with the "pure" domain concept, and the implementing Repositories will need to deal
+with that.

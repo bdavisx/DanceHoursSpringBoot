@@ -23,7 +23,7 @@ class DanceHoursId internal constructor ( public val identifier : UUID) : Serial
         return MoreObjects.toStringHelper(this).add("identifier", identifier).toString()
     }
 
-    companion object Default {
+    companion object {
         public val EmptyUUID : UUID = emptyUUID()
         public val Empty = DanceHoursId(EmptyUUID)
 
