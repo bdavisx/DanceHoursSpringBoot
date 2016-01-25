@@ -26,8 +26,12 @@
             </thead>
             <tbody>
             <tr th:each="user : ${users}">
-                <td th:text="${user.fullName}">Bill Davis</td>
-                <td th:text="${user.email}">abc@def.blah</td>
+                <td><a href="#" th:href="@{${user.id}}">
+                    <span th:text="${user.fullName}">Bill Davis</span>
+                </a></td>
+                <td><a href="#" th:href="@{${user.id}}">
+                    <span th:text="${user.email}">a@b.com</span>
+                </a></td>
             </tr>
             </tbody>
         </table>
