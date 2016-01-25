@@ -1,6 +1,5 @@
 package com.tartner.dancehours.domain.danceuser
 
-import com.tartner.dancehours.general.DanceHoursId
 import com.tartner.utilities.Empty
 import com.tartner.utilities.emptyUUID
 import org.hibernate.annotations.Type
@@ -10,13 +9,9 @@ import javax.persistence.*
 @Entity
 @Table(name = "dance_user")
 public open class DanceUserAggregate() {
-    @Id @Type(type = "pg-uuid")
+    @Id  @Type(type = "pg-uuid")
     @Column(name = "user_id", nullable = false, insertable = true, updatable = true)
-    private var _id : UUID = emptyUUID()
-
-    public var id: DanceHoursId
-        get() = DanceHoursId(_id)
-        set(value) { _id = value.identifier }
+    public var id: UUID = emptyUUID()
 
     @Basic
     @Column(name = "full_name", nullable = false, insertable = true, updatable = true,

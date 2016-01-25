@@ -1,8 +1,5 @@
 package com.tartner.dancehours.web.main
 
-import com.tartner.dancehours.domain.danceuser.DanceUserAggregate
-import com.tartner.dancehours.domain.danceuser.DanceUserRepository
-import com.tartner.dancehours.general.DanceHoursId
 import com.tartner.dancehours.service.UserMaintenanceService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller

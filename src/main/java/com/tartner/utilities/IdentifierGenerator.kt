@@ -1,14 +1,14 @@
 package com.tartner.utilities
 
-import com.tartner.dancehours.general.DanceHoursId
+import java.util.*
 
 public interface IdentifierGenerator {
-    public fun newId(): DanceHoursId
+    public fun newId(): UUID
 
     companion object {
         var defaultGenerator : IdentifierGenerator = SequentialIdentifierGenerator()
 
-        fun createDefault() : DanceHoursId = defaultGenerator.newId()
+        fun createDefault() : UUID = defaultGenerator.newId()
     }
 }
 
