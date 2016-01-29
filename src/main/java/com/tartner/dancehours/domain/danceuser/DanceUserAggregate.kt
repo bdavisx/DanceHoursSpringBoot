@@ -6,6 +6,11 @@ import org.hibernate.annotations.Type
 import java.util.*
 import javax.persistence.*
 
+/**
+    Yes, I'm calling it an aggregate when it's nothing of the sort - intentionally using an
+    anemic domain model for now because it seems to be a basic CRUD app with some reporting.
+    Probably need to change the name if the model stays this way.
+ */
 @Entity
 @Table(name = "dance_user")
 public open class DanceUserAggregate() {

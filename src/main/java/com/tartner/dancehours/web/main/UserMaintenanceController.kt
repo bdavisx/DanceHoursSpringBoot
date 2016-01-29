@@ -28,6 +28,6 @@ open class UserMaintenanceController @Autowired constructor(
         val userId = UUID.fromString(userIdString)
         val userDetails = service.GetDetails(userId)
         model.addAttribute("user", userDetails)
-        return "index"
+        return "users/details"
     }
 }
