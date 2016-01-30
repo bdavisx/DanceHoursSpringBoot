@@ -18,8 +18,9 @@
 <div layout:fragment="content">
     <div class="container">
         <!--/*@thymesVar id="user" type="com.tartner.dancehours.service.DanceUserDetails"*/-->
+        <div class="row"><h2 class="col-sm-8">User Information</h2></div>
         <form action="#" th:action="@{/users/save}" th:object="${user}" method="post"
-            class="form-horizontal">
+            class="form-">
             <input type="hidden" th:field="*{id}"/>
             <div class="form-group">
                 <label for="fullName" class="col-sm-2 control-label">Full Name</label>
