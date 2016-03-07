@@ -25,11 +25,13 @@
             </tr>
             </thead>
             <tbody>
+            <!--/*@thymesVar id="user" type="com.tartner.dancehours.service.DanceUserDetails"*/-->
             <tr th:each="user : ${users}">
-                <td><a href="#" th:href="@{${user.id}}">
+                <td>
+                <a href="#" th:href="@{/users/${user.id}}">
                     <span th:text="${user.fullName}">Bill Davis</span>
                 </a></td>
-                <td><a href="#" th:href="@{${user.id}}">
+                <td><a href="#" th:href="@{/users/{user.id}}">
                     <span th:text="${user.email}">a@b.com</span>
                 </a></td>
             </tr>

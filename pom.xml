@@ -19,9 +19,10 @@
 	</parent>
 
 	<properties>
-		<kotlin.version>1.0.0-beta-4589</kotlin.version>
+		<kotlin.version>1.0.0-rc-1036</kotlin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<axon.version>2.4.3</axon.version>
 	</properties>
 
 	<dependencies>
@@ -69,7 +70,19 @@
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
 
-        <!-- Utilities -->
+		<!-- Axon -->
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-core</artifactId>
+			<version>${axon.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>0.7.4</version>
+		</dependency>
+
+		<!-- Utilities -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -98,9 +111,17 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Test stuff -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.axonframework</groupId>
+			<artifactId>axon-test</artifactId>
+			<version>${axon.version}</version>
 			<scope>test</scope>
 		</dependency>
 

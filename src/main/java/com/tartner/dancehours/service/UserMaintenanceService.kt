@@ -13,24 +13,12 @@ class UserMaintenanceService @Autowired constructor(
     private val repository: DanceUserRepository
     ) {
 
-    fun GetUserList() : List<DanceUserAggregate> = repository.findAll()
+    fun GetUserList() : List<DanceUserDetails> = repository.findAll().map { dua ->
+        DanceUserDetails.from(dua); };
 
     fun GetDetails(userId: UUID) : DanceUserDetails {
         val user = repository.findOne(userId)
-        val userDetails = DanceUserDetails();
-        with(userDetails, {
-            id = user.id
-            fullName = user.fullName
-            email = user.email
-            isActive = user.isActive
-        })
-        return userDetails
+        return DanceUserDetails.from(user);
     }
 }
 
-class DanceUserDetails() {
-    public var id: UUID = emptyUUID()
-    public var fullName: String = String.Empty
-    public var email: String = String.Empty
-    public var isActive: Boolean = true
-}

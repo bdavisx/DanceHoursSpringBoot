@@ -15,9 +15,8 @@ open class UserMaintenanceController @Autowired constructor(
     private val service: UserMaintenanceService
     ) {
 
-    @RequestMapping(method=arrayOf(RequestMethod.GET), path=arrayOf("/"))
+    @RequestMapping(method=arrayOf(RequestMethod.GET))
     fun list(model: Model): String {
-        // TODO: service should return immutable users
         model.addAttribute("users", service.GetUserList())
         return "users/list"
     }

@@ -13,8 +13,6 @@ open class IndexController @Autowired constructor(
 
     @RequestMapping("/")
     fun index(model: Model): String {
-        // TODO: service should return immutable users
-        model.addAttribute("users", service.GetUserList())
         return "index"
     }
 }

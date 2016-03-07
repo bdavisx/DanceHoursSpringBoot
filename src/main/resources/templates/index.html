@@ -14,17 +14,7 @@
 <body>
 
 <div class="container">
-    <table class="table table-hover table-striped">
-        <thead>
-            <tr><td>Name</td><td>Email</td></tr>
-        </thead>
-        <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.fullName}">Bill Davis</td>
-                <td th:text="${user.email}">abc@def.blah</td>
-            </tr>
-        </tbody>
-    </table>
+    <a href="/users" th:href="@{/users}">User List</a>
 </div>
 
 </body>
