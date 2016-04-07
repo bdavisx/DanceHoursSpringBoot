@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component
 
 @Component
 open class CreateDanceUserCommandHandler @Autowired constructor(
-    private val queryModel: DefaultDanceUserAggregateQueryModel,
-    private val passwordEventFactory: PasswordEventFactory,
-    private val aggregateRepository: Repository<DanceUserAggregate> ) {
+    private val queryModel : DefaultDanceUserAggregateQueryModel,
+    private val passwordEventFactory : PasswordEventFactory,
+    private val aggregateRepository : Repository<DanceUserAggregate>) {
 
     /* Note: Should the validation logic be in the CommandHandler or the
             Aggregate? I'm for having all of it in the Aggregate, because that
@@ -24,7 +24,7 @@ open class CreateDanceUserCommandHandler @Autowired constructor(
             complex/external validation. This is fine, but the engine api should be
             determined by the aggregate as an interface, then a specific implementation
             can complete it however.
-         */
+    */
     /* Note: Should the aggregate or the command handler be "in charge" of the
         multiple events that can come from the command?
 
@@ -38,16 +38,19 @@ open class CreateDanceUserCommandHandler @Autowired constructor(
         For consistencies sake, I'm going w/ having it all in the aggregate.
         */
     @CommandHandler
-    public fun createDanceUser(command: CreateDanceUserCommand, unitOfWork: UnitOfWork) {
+    public fun createDanceUser(command : CreateDanceUserCommand,
+        unitOfWork : UnitOfWork) {
         val aggregate = DanceUserAggregate()
         val passwordSetEvent = createPasswordSetEvent(command)
         aggregate.create(command, queryModel, passwordSetEvent)
         aggregateRepository.add(aggregate)
     }
 
-    private fun createPasswordSetEvent(command: CreateDanceUserCommand): PasswordSetEvent {
+    private fun createPasswordSetEvent(
+        command : CreateDanceUserCommand) : PasswordSetEvent {
         // Note: we create the password event here to keep the dependenccy
         // out of the aggregate
-        return passwordEventFactory.createPasswordSetEvent(command.userId, command.password)
+        return passwordEventFactory.createPasswordSetEvent(command.userId,
+            command.password)
     }
 }

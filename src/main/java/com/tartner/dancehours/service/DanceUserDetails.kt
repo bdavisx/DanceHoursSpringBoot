@@ -1,10 +1,8 @@
 package com.tartner.dancehours.service
 
 import com.tartner.dancehours.DanceHoursId
-import com.tartner.dancehours.domain.danceuser.DanceUserAggregate
+import com.tartner.dancehours.querymodel.jpa.DanceUserDataEntity
 import com.tartner.utilities.Empty
-import com.tartner.utilities.emptyUUID
-import java.util.*
 
 class DanceUserDetails() {
     public var id: DanceHoursId = DanceHoursId.Empty
@@ -13,12 +11,12 @@ class DanceUserDetails() {
     public var isActive: Boolean = true
 
     companion object {
-        public fun from(user: DanceUserAggregate): DanceUserDetails {
+        public fun from(user: DanceUserDataEntity): DanceUserDetails {
             val userDetails = DanceUserDetails();
-//            userDetails.id = user.id;
-//            userDetails.fullName = user.fullName
-//            userDetails.email = user.email
-//            userDetails.isActive = user.isActive
+            userDetails.id = DanceHoursId.create(user.userId);
+            userDetails.fullName = user.fullName;
+            userDetails.email = user.email;
+            userDetails.isActive = user.isActive;
             return userDetails;
         }
     }

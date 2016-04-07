@@ -15,10 +15,10 @@ import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 
 @Component @Transactional open class DanceUserProjector @Autowired constructor(
-    @PersistenceContext private val em: EntityManager ) {
+    @PersistenceContext private val em : EntityManager) {
 
     @EventHandler
-    public fun handle(event: DanceUserCreatedEvent) {
+    public fun handle(event : DanceUserCreatedEvent) {
         val userRecord = DanceUserDataEntity()
         userRecord.userId = event.userId.identifier
         userRecord.email = event.email
