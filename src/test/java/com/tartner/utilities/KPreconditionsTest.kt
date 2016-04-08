@@ -11,7 +11,7 @@ class KPreconditionsTest {
 
     @Test
     public fun checkEmptyValue_EmptyString_BeDefaultErrorMessage() {
-        assertFailsWith( IllegalAccessException::class, {
+        assertFailsWith( IllegalArgumentException::class, {
             KPreconditions.checkNotEmpty("")
         } )
     }
