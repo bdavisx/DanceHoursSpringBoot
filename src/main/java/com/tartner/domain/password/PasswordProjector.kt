@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component
 @Component open class PasswordProjector @Autowired constructor(
     private val repository: AggregatePasswordRepository) {
 
-    @EventHandler
-    public fun handle(event: PasswordSetEvent) {
+    @EventHandler fun handle(event: PasswordSetEvent) {
         var passwordRecord: AggregatePasswordsEntity? = repository.findOne(event.aggregateId)
 
         if (passwordRecord == null) {

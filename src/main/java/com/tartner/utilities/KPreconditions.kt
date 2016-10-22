@@ -5,12 +5,13 @@ import com.google.common.base.Strings
 class KPreconditions {
     companion object {
         fun checkNotEmpty(value : String) {
-            checkNotEmpty(value, "Empty String when there shouldn't be")
+            checkNotEmpty(value, {"Empty String when there shouldn't be"})
         }
 
-        fun checkNotEmpty(value : String, message : String) {
+        fun checkNotEmpty(value : String, lazyMessage: () -> Any ) {
             if (Strings.isNullOrEmpty(value)) {
-                throw IllegalArgumentException(message)
+                val message = lazyMessage()
+                throw IllegalArgumentException(message.toString())
             }
         }
     }

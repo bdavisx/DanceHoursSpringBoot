@@ -5,7 +5,7 @@ package com.tartner
 import org.junit.Assert
 import kotlin.reflect.KClass
 
-fun expectException(expectedExceptionClass : KClass<Any>, body : () -> Unit) {
+fun expectException(expectedExceptionClass : KClass<*>, body : () -> Unit) {
     expectException(expectedExceptionClass.java, Runnable { body() })
 }
 

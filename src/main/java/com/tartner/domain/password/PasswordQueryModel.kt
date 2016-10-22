@@ -9,7 +9,7 @@ import java.util.*
 @Component open class PasswordQueryModel
 @Autowired constructor(private val passwordService: PasswordService, private val repository: AggregatePasswordRepository) {
 
-    public fun passwordsMatch(aggregateId: DanceHoursId, password: String): Boolean {
+    fun passwordsMatch(aggregateId: DanceHoursId, password: String): Boolean {
         val aggregatePassword: AggregatePasswordsEntity? = repository.findOne(aggregateId)
 
         if( aggregatePassword == null ) return false
@@ -17,7 +17,7 @@ import java.util.*
         return passwordsMatch(password, aggregatePassword.passwordHash, aggregatePassword.salt)
     }
 
-    public fun passwordsMatch(password: String, passwordHashToCompareAgainst: ByteArray,
+    fun passwordsMatch(password: String, passwordHashToCompareAgainst: ByteArray,
         salt: ByteArray): Boolean {
 
         val keySpecification = passwordService.createKeySpecification(password, salt)

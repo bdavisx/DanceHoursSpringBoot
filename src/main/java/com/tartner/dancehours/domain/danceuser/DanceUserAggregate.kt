@@ -70,7 +70,7 @@ public class DanceUserAggregate
         queryModel : DanceUserAggregateQueryModel) {
         Preconditions.checkArgument(!userId.equals(DanceHoursId.Empty),
             "No userId supplied")
-        KPreconditions.checkNotEmpty(email, "email was empty")
+        KPreconditions.checkNotEmpty(email, { "email was empty" })
         Preconditions.checkArgument(!fullName.isEmpty(), "Name was empty")
         Preconditions.checkArgument(fullName.length <= MaximumNameSize,
             "Name too long")

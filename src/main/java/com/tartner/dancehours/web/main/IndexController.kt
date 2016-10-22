@@ -7,9 +7,7 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
-open class IndexController @Autowired constructor(
-    private val service: UserMaintenanceService
-    ) {
+open class IndexController @Autowired constructor(private val service: UserMaintenanceService) {
 
     @RequestMapping("/")
     fun index(model: Model): String {

@@ -32,6 +32,6 @@ import javax.crypto.spec.PBEKeySpec
         // also for an attacker.
         private val DesiredKeyLength = 256
         private val NumberOfHashingIterations = 65536
-        public val SecretKeyAlgorithm: String = "PBKDF2WithHmacSHA1"
+        val SecretKeyAlgorithm: String = "PBKDF2WithHmacSHA1"
     }
 }
