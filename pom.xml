@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<kotlin.version>1.0.4</kotlin.version>
+		<kotlin.version>1.1-M02</kotlin.version>
 		<java.version>1.8</java.version>
 		<axon.version>2.4.3</axon.version>
 		<mybatis.version>3.3.0</mybatis.version>
@@ -28,17 +28,6 @@
 		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
 		<taglibs-standard.version>1.1.2</taglibs-standard.version>
 	</properties>
-
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-kotlin-exposed</id>
-            <name>bintray</name>
-            <url>http://dl.bintray.com/kotlin/exposed</url>
-        </repository>
-    </repositories>
 
     <dependencies>
 		<dependency>
@@ -133,7 +122,37 @@
 
 	</dependencies>
 
-	<build>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-kotlin-exposed</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/kotlin/exposed</url>
+        </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-kotlin-kotlin-eap-1.1</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/kotlin/kotlin-eap-1.1</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-kotlin-kotlin-eap-1.1</id>
+            <name>bintray-plugins</name>
+            <url>http://dl.bintray.com/kotlin/kotlin-eap-1.1</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

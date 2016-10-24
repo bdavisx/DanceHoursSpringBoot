@@ -73,7 +73,7 @@ class DanceUserAggregateTest {
 
         val user = DanceUserAggregate()
         expectException(DanceUserIdAlreadyExistsException::class) {
-            user.create(createCommand, queryModelMock, passwordSetEvent!!)
+            user.create(createCommand, queryModelMock, passwordSetEvent)
         }
     }
 
@@ -87,7 +87,7 @@ class DanceUserAggregateTest {
         val user = DanceUserAggregate()
 
         expectException(DanceUserEmailAlreadyExistsException::class) {
-            user.create(createCommand, queryModelMock, passwordSetEvent!!)
+            user.create(createCommand, queryModelMock, passwordSetEvent)
         }
     }
 
