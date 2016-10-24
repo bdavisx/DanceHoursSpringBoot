@@ -12,19 +12,18 @@ import org.axonframework.eventsourcing.annotation.AggregateIdentifier
 import org.axonframework.eventsourcing.annotation.EventSourcingHandler
 import java.util.*
 
-public class DanceUserAggregate
-    : AbstractAnnotatedAggregateRoot<DanceHoursId>() {
+class DanceUserAggregate:AbstractAnnotatedAggregateRoot<DanceHoursId>() {
 
     @AggregateIdentifier
-    private var id : DanceHoursId = DanceHoursId.Default.Empty
-    private var fullName : String = String.Empty
-    private var email : String = String.Empty
-    private var password : EncodedPassword = EncodedPassword.Invalid
-    private val userRoles : List<DanceUserRole> = ArrayList<DanceUserRole>()
+    private var id: DanceHoursId = DanceHoursId.Default.Empty
+    private var fullName: String = String.Empty
+    private var email: String = String.Empty
+    private var password: EncodedPassword = EncodedPassword.Invalid
+    private val userRoles: List<DanceUserRole> = ArrayList<DanceUserRole>()
 
-    fun create(command : CreateDanceUserCommand,
-        queryModel : DanceUserAggregateQueryModel,
-        passwordSetEvent : PasswordSetEvent) {
+    fun create(command: CreateDanceUserCommand,
+        queryModel: DanceUserAggregateQueryModel,
+        passwordSetEvent: PasswordSetEvent) {
 
         // TODO: change fullName to class, w/ it's own validation capabilities
         initialize(command.userId, command.email, command.fullName, queryModel)
@@ -37,9 +36,9 @@ public class DanceUserAggregate
 
     // TODO: create classes for first/last name/email; have already screwed them up,
     // this should make serialization go easier as well; look @ where else this s/b done
-    private fun initialize(userId : DanceHoursId, email : String,
-        fullName : String,
-        queryModel : DanceUserAggregateQueryModel) {
+    private fun initialize(userId: DanceHoursId, email: String,
+        fullName: String,
+        queryModel: DanceUserAggregateQueryModel) {
         /* Note: do we want the "regular" or "container" parameters first?
             "regular": they are the more important part of the method.
          */
@@ -51,23 +50,23 @@ public class DanceUserAggregate
     }
 
     @EventSourcingHandler
-    private fun danceUserCreated(event : DanceUserCreatedEvent) {
+    private fun danceUserCreated(event: DanceUserCreatedEvent) {
         id = event.userId
         email = event.email
         fullName = event.fullName
     }
 
     @EventSourcingHandler
-    private fun passwordSetEvent(event : PasswordSetEvent) {
+    private fun passwordSetEvent(event: PasswordSetEvent) {
         // Note: not sure that we actually need to save this if we're getting
         // the login validation data from a projection. It'll get there
         // thru the projection class.
         password = EncodedPassword(event)
     }
 
-    private fun validateInitialize(userId : DanceHoursId, email : String,
-        fullName : String,
-        queryModel : DanceUserAggregateQueryModel) {
+    private fun validateInitialize(userId: DanceHoursId, email: String,
+        fullName: String,
+        queryModel: DanceUserAggregateQueryModel) {
         Preconditions.checkArgument(!userId.equals(DanceHoursId.Empty),
             "No userId supplied")
         KPreconditions.checkNotEmpty(email, { "email was empty" })

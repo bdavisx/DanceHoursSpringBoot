@@ -7,7 +7,7 @@ import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
 
 @Component open class DanceUserListQueryModel @Autowired constructor(
-    @PersistenceContext private val em: EntityManager ) {
+    @PersistenceContext private val em: EntityManager) {
 
     public fun getAllUsers(): List<DanceUserListTO> {
         return em.createQuery(

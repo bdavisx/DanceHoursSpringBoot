@@ -8,7 +8,8 @@ public class DanceUserListTO {
     public var email: String = String.Empty
     public var roles: List<DanceUserListRoleListTO>? = null
 
-    public constructor() {}
+    public constructor() {
+    }
 
     public constructor(userId: DanceHoursId, email: String, roles: List<DanceUserListRoleListTO>) {
         this.userId = userId

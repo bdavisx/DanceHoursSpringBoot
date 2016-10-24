@@ -10,26 +10,26 @@ public class DanceUserRole() {
     @Id
     @Column(name = "role_code", nullable = false, insertable = true,
         updatable = true, length = 16)
-    public val roleCode : String = String.Empty
+    public val roleCode: String = String.Empty
 
     @Basic
     @Column(name = "name", nullable = false, insertable = true,
         updatable = true, length = 255)
-    public var name : String = String.Empty
+    public var name: String = String.Empty
 
     @Basic
     @Column(name = "description", nullable = false, insertable = true,
         updatable = true,
         length = 2147483647)
-    public var description : String = String.Empty
+    public var description: String = String.Empty
 
     @Basic
     @Column(name = "is_admin", nullable = false, insertable = true,
         updatable = true)
-    public var isAdmin : Boolean = false
+    public var isAdmin: Boolean = false
 
-    override fun hashCode() : Int = roleCode.hashCode()
-    override fun equals(other : Any?) : Boolean {
+    override fun hashCode(): Int = roleCode.hashCode()
+    override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
         }

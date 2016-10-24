@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod
 import java.util.*
 
 @Controller
-@RequestMapping(path=arrayOf("/users"))
+@RequestMapping(path = arrayOf("/users"))
 open class UserMaintenanceController @Autowired constructor(
     private val service: UserMaintenanceService
-    ) {
+) {
 
-    @RequestMapping(method=arrayOf(RequestMethod.GET))
+    @RequestMapping(method = arrayOf(RequestMethod.GET))
     fun list(model: Model): String {
         model.addAttribute("users", service.GetUserList())
         return "users/list"
     }
 
-    @RequestMapping(method=arrayOf(RequestMethod.GET), path=arrayOf("/{userIdString}"))
-    fun showDetails(@PathVariable userIdString : String, model : Model): String {
+    @RequestMapping(method = arrayOf(RequestMethod.GET), path = arrayOf("/{userIdString}"))
+    fun showDetails(@PathVariable userIdString: String, model: Model): String {
         // TODO: service should return immutable users
         val userId = UUID.fromString(userIdString)
         val userDetails = service.GetDetails(userId)

@@ -5,16 +5,16 @@ package com.tartner
 import org.junit.Assert
 import kotlin.reflect.KClass
 
-fun expectException(expectedExceptionClass : KClass<*>, body : () -> Unit) {
+fun expectException(expectedExceptionClass: KClass<*>, body: ()->Unit) {
     expectException(expectedExceptionClass.java, Runnable { body() })
 }
 
-fun expectException(expectedExceptionClass : Class<*>, body : Runnable) {
+fun expectException(expectedExceptionClass: Class<*>, body: Runnable) {
     var caughtException = false
 
     try {
         body.run()
-    } catch (ex : Exception) {
+    } catch (ex: Exception) {
         caughtException = expectedExceptionClass.isAssignableFrom(ex.javaClass)
     }
 

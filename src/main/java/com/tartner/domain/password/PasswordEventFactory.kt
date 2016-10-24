@@ -11,7 +11,8 @@ import javax.crypto.spec.PBEKeySpec
 @Component open class PasswordEventFactory @Autowired constructor(
     private val random: SecureRandom, private val passwordService: PasswordService) {
 
-    public fun createPasswordSetEvent(aggregateId: DanceHoursId, password: String): PasswordSetEvent {
+    public fun createPasswordSetEvent(aggregateId: DanceHoursId,
+        password: String): PasswordSetEvent {
         val salt = random.generateSeed(SaltLength)
         val keySpecification = passwordService.createKeySpecification(password, salt)
         val passwordHash = passwordService.createPasswordHash(keySpecification)

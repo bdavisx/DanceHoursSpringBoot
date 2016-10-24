@@ -8,7 +8,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "aggregate_passwords", schema = "public", catalog = "dance_hours")
-public class AggregatePasswordsEntity {
+class AggregatePasswordsEntity {
     @Id @Type(type = "pg-uuid")
     @Column(name = "aggregate_id", nullable = false, insertable = true, updatable = true)
     public var aggregateId: UUID = emptyUUID()
@@ -34,3 +34,4 @@ public class AggregatePasswordsEntity {
             that.passwordHash) && Objects.equal(salt, that.salt)
     }
 }
+

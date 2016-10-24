@@ -25,11 +25,14 @@ class DanceUserAggregateTest {
         val CreatePassword = "notReal"
     }
 
-    private var fixture : FixtureConfiguration<*>? = KFixtures.newGivenWhenThenFixture(DanceUserAggregate::class.java)
-    private var createCommand : CreateDanceUserCommand = createValidCreateCommand()
-    private var createdEvent : DanceUserCreatedEvent = createCreatedEventForValidCommand(createCommand)
-    private var queryModelMock : DanceUserAggregateQueryModel = mock(DanceUserAggregateQueryModel::class.java)
-    private var passwordSetEvent : PasswordSetEvent = createPasswordSetEvent()
+    private var fixture: FixtureConfiguration<*>? = KFixtures.newGivenWhenThenFixture(
+        DanceUserAggregate::class.java)
+    private var createCommand: CreateDanceUserCommand = createValidCreateCommand()
+    private var createdEvent: DanceUserCreatedEvent = createCreatedEventForValidCommand(
+        createCommand)
+    private var queryModelMock: DanceUserAggregateQueryModel = mock(
+        DanceUserAggregateQueryModel::class.java)
+    private var passwordSetEvent: PasswordSetEvent = createPasswordSetEvent()
 
     @Before
     @Throws(Exception::class)
@@ -56,7 +59,7 @@ class DanceUserAggregateTest {
         assertThat<PasswordSetEvent>(passwordSetEvent, equalTo(events.next().payload))
     }
 
-    private fun buildCreateUserId() : DanceHoursId {
+    private fun buildCreateUserId(): DanceHoursId {
         return DanceHoursId.create(CreateUserId)
     }
 
@@ -70,15 +73,13 @@ class DanceUserAggregateTest {
 
         val user = DanceUserAggregate()
         expectException(DanceUserIdAlreadyExistsException::class) {
-            user.create(createCommand!!, queryModelMock, passwordSetEvent!!)
+            user.create(createCommand, queryModelMock, passwordSetEvent!!)
         }
     }
 
     @Test
     @Throws(Exception::class)
     fun danceUserCreatedDuplicateEmail() {
-        val command = createValidCreateCommand()
-
         val queryModelMock = mock(DanceUserAggregateQueryModel::class.java)
         `when`(queryModelMock.emailAlreadyExists(CreateEmail))
             .thenReturn(true)
@@ -86,26 +87,26 @@ class DanceUserAggregateTest {
         val user = DanceUserAggregate()
 
         expectException(DanceUserEmailAlreadyExistsException::class) {
-            user.create(createCommand!!, queryModelMock, passwordSetEvent!!)
+            user.create(createCommand, queryModelMock, passwordSetEvent!!)
         }
     }
 
-    private fun createValidCreateCommand() : CreateDanceUserCommand {
+    private fun createValidCreateCommand(): CreateDanceUserCommand {
         val command = CreateDanceUserCommand(buildCreateUserId(), CreateEmail,
             CreateFullName, CreatePassword, HashSet<DanceUserRole>())
         return command
     }
 
     private fun createCreatedEventForValidCommand(
-        command : CreateDanceUserCommand) : DanceUserCreatedEvent {
+        command: CreateDanceUserCommand): DanceUserCreatedEvent {
         val event = DanceUserCreatedEvent(buildCreateUserId(),
             command.email, command.fullName, command.roles)
         return event
     }
 
-    private fun createPasswordSetEvent() : PasswordSetEvent {
+    private fun createPasswordSetEvent(): PasswordSetEvent {
         val passwordHolder = TestPasswordHolder.CreateDefaultTest()
-        return PasswordSetEvent(createCommand!!.userId,
+        return PasswordSetEvent(createCommand.userId,
             passwordHolder.passwordHash, passwordHolder.salt)
     }
 

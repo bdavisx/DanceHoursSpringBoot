@@ -12,7 +12,7 @@ import java.util.*
     fun passwordsMatch(aggregateId: DanceHoursId, password: String): Boolean {
         val aggregatePassword: AggregatePasswordsEntity? = repository.findOne(aggregateId)
 
-        if( aggregatePassword == null ) return false
+        if (aggregatePassword == null) return false
 
         return passwordsMatch(password, aggregatePassword.passwordHash, aggregatePassword.salt)
     }

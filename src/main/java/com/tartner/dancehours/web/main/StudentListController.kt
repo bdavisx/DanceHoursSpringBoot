@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 open class StudentListController @Autowired constructor() {
-    @RequestMapping(path=arrayOf("/studentList"),
-        method=arrayOf(RequestMethod.GET))
+    @RequestMapping(path = arrayOf("/studentList"),
+        method = arrayOf(RequestMethod.GET))
     fun list(): List<StudentListData> {
         val studentList = listOf(
-            StudentListData( "abc", "Student 1", listOf(
+            StudentListData("abc", "Student 1", listOf(
                 HoursDonatedData("Your Hours", 5),
                 HoursDonatedData("Others", 2),
                 HoursDonatedData("Remaining", 5, true)
             ), 12),
-            StudentListData( "def", "Student 2", listOf(
+            StudentListData("def", "Student 2", listOf(
                 HoursDonatedData("Your Hours", 4),
                 HoursDonatedData("Remaining", 6, true)
             ), 10)

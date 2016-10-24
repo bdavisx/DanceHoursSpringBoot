@@ -1,3 +1,3 @@
 package com.tartner.domain.password
 
-public class UnableToCreatePasswordException(cause: Throwable) : RuntimeException(cause)
+public class UnableToCreatePasswordException(cause: Throwable):RuntimeException(cause)

@@ -5,7 +5,7 @@ import com.tartner.dancehours.querymodel.jpa.DanceUserDataEntity
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.CrudRepository
 
-public interface DanceUserRepository : CrudRepository<DanceUserDataEntity, DanceHoursId> {
+public interface DanceUserRepository:CrudRepository<DanceUserDataEntity, DanceHoursId> {
 
     @Query("SELECT count(danceUser) from DanceUserDataEntity danceUser where danceUser.email = ?1")
     public fun existsByEmail(email: String): Long
