@@ -10,6 +10,7 @@ import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.ComponentScan
+import org.springframework.test.annotation.Rollback
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.test.context.transaction.TransactionConfiguration
@@ -20,16 +21,12 @@ import java.util.*
 @ContextConfiguration(classes = arrayOf(StandardIntegrationTestConfiguration::class))
 @ComponentScan(basePackages = arrayOf("com.tartner.domain"))
 @Transactional
-@TransactionConfiguration(defaultRollback = true)
+@Rollback
 @Category(IntegrationTestCategory::class)
 public open class PasswordProjectorTest {
-    @Autowired private var repository: AggregatePasswordRepository? = null
-
     @Test
     public fun checkEvent() {
-        if( repository == null ) throw IllegalStateException("repository not initialized")
-
-        val projector = PasswordProjector(repository!!)
+        val projector = PasswordProjector()
 
         val holder = TestPasswordHolder.CreateDefaultTest()
 
