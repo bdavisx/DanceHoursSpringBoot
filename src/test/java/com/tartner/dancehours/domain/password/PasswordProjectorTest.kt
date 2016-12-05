@@ -24,6 +24,8 @@ import java.util.*
 @Rollback
 @Category(IntegrationTestCategory::class)
 public open class PasswordProjectorTest {
+    @Autowired private var repository: AggregatePasswordRepository? = null
+
     @Test
     public fun checkEvent() {
         val projector = PasswordProjector()

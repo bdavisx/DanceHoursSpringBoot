@@ -74,7 +74,7 @@
         <dependency>
             <groupId>org.funktionale</groupId>
             <artifactId>funktionale</artifactId>
-            <version>0.9.5</version>
+            <version>0.9.6</version>
         </dependency>
 
 		<!-- Axon -->
